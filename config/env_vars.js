@@ -1,3 +1,3 @@
 import 'dotenv/config'
 
-export default process.env
+export const env_vars = process.env

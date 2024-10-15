@@ -1,5 +1,6 @@
 import { Connection } from "@solana/web3.js";
+import { env_vars } from "../../config/env_vars.js"
 
-const connection = new Connection("https://solana-mainnet.core.chainstack.com/8fd3eea870e9b0b9b3f539fa971c6e65")
+const connection = new Connection(env_vars.CHAINSTACK_CONNECTION_URL)
 
 export default connection
