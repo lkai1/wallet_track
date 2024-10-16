@@ -1,12 +1,16 @@
 import { DataTypes } from "sequelize";
 
-export const NewPair = (sequelize) => {
-	return sequelize.define("NewPair", {
+export const NewPool = (sequelize) => {
+	return sequelize.define("NewPool", {
 		id: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV4,
 			unique: true,
 			primaryKey: true
+		},
+		poolAddress: {
+			type: DataTypes.STRING,
+			allowNull: false
 		},
 		tokenAddress: {
 			type: DataTypes.STRING,
@@ -16,12 +20,8 @@ export const NewPair = (sequelize) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		dex: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
 		creationTime: {
-			type: DataTypes.DATE,
+			type: DataTypes.STRING,
 			allowNull: false
 		}
 	}, {
