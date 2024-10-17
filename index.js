@@ -10,7 +10,7 @@ app.use(express.json())
 
 initDb().then(() => {
 	app.listen(3001, () => {
-		console.log("App is running on port 3001...")
+		console.log("App is running on port 3001")
 		saveNewPoolsInInterval()
 		saveUniqueBuyersOfTokensInInterval()
 		bot()
