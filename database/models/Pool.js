@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
-export const NewPool = (sequelize) => {
-	return sequelize.define("NewPool", {
+export const Pool = (sequelize) => {
+	return sequelize.define("Pool", {
 		id: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV4,

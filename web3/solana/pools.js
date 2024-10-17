@@ -12,12 +12,12 @@ const getNewPools = async () => {
 
 		const responses = await Promise.all(URLs.map((url) => { return axios.get(url) }))
 
-		const poolsFromDatabase = await db.newPools.findAll()
+		const poolsFromDatabase = await db.pools.findAll()
 
-		for (let i = 0; i < responses.length - 1; i++) {
+		for (let i = 0; i < responses.length; i++) {
 			const data = responses[i].data.data
 
-			for (let i = 0; i < data.length - 1; i++) {
+			for (let i = 0; i < data.length; i++) {
 				if ("solana" === data[i].relationships.base_token.data.id.split("_")[0]) {
 					const alreadyAdded = !!liquidityPools.find((pool) => { return pool.poolAddress === data[i].attributes.address })
 					const alreadyInDatabase = !!poolsFromDatabase.find((pool) => { return pool.dataValues.poolAddress === data[i].attributes.address })
@@ -52,14 +52,13 @@ const getNewPools = async () => {
 }
 
 export const saveNewPoolsInInterval = async () => {
-	//make interval self changing based on new pools in an hour
 	try {
 		const liquidityPools = await getNewPools()
-		await db.newPools.bulkCreate(liquidityPools)
+		await db.pools.bulkCreate(liquidityPools)
 	} catch (e) {
 		console.log(e)
 	} finally {
-		const pollInterval = 15 * 60 * 1000
+		const pollInterval = 10 * 60 * 1000
 		setTimeout(() => { return saveNewPoolsInInterval() }, pollInterval)
 	}
 }
