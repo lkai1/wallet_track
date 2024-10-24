@@ -21,6 +21,6 @@ export const Buyer = (sequelize) => {
 			allowNull: false
 		}
 	}, {
-		timestamps: false
+		timestamps: true
 	})
 }

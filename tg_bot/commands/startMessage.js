@@ -1,5 +1,5 @@
 
-export const infoMessage = (bot) => {
+export const startMessage = (bot) => {
 
 	const message = `
 		<b>Info</b>
@@ -9,5 +9,5 @@ The bot will return the wallets that were in the first 200 unique buyers of all 
 Only newer tokens can be found with greater than 1000$ volume and 1000$ liquidity pool value approximately 1h from the creation of the pool.
 Token also has to have had at least 200 unique buyers in the first 1 hour.
 	`
-	bot.command("info", (context) => context.reply(message, { parse_mode: "HTML" }))
+	bot.command("start", (context) => context.reply(message, { parse_mode: "HTML" }))
 }

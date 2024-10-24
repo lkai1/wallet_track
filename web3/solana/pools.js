@@ -1,5 +1,6 @@
 import axios from "axios"
 import db from "../../database/db.js"
+import { env_vars } from "../../config/env_vars.js"
 
 const getNewPools = async () => {
 	try {
@@ -7,10 +8,17 @@ const getNewPools = async () => {
 		const URLs = []
 
 		for (let i = 1; i < 11; i++) {
-			URLs.push(`https://api.geckoterminal.com/api/v2/networks/solana/new_pools?page=${i}`)
+			URLs.push(`https://pro-api.coingecko.com/api/v3/onchain/networks/solana/new_pools?page=${i}`)
 		}
 
-		const responses = await Promise.all(URLs.map((url) => { return axios.get(url) }))
+		const responses = await Promise.all(URLs.map((url) => {
+			return axios.get(url, {
+				headers: {
+					"accept": "application/json",
+					"x-cg-pro-api-key": env_vars.COINGECKO_API_KEY
+				}
+			})
+		}))
 
 		const poolsFromDatabase = await db.pools.findAll()
 
