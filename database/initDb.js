@@ -3,7 +3,7 @@ import db from "./db.js"
 
 const initDb = async () => {
 	try {
-		const client = new pg.Client("postgresql://postgres:NzhRUfFpTaXEApquhkAyGtTPFvEluwnj@postgres.railway.internal:5432/railway")
+		const client = new pg.Client("postgresql://postgres:cqsnTahKlBJCsLTZZbYsCEkOuZUqLkCB@postgres.railway.internal:5432/railway")
 		await client.connect()
 		await db.sequelize.sync({ alter: true })
 		await client.end()
