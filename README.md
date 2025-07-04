@@ -1,0 +1,1 @@
+Telegram bot that let's you find cryptocurrency wallets that holds for example 3 specific coins. This can be used to find a wallet of a crypto influencer for example and then you can copy the trades by looking at his transfer from solscan.
